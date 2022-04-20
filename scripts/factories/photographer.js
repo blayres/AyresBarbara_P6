@@ -24,3 +24,24 @@ function photographerFactory(data) {
   }
   return { name, picture, getUserCardDOM }
 }
+
+function getParamsUrl(url) {
+  let string = url.search;
+  return string.substring(3);
+}
+const idUser = getParamsUrl(window.location);
+
+async function setData() {
+  let response = await fetch("../data/photographers.json");
+  if (!response.ok) {
+    return "error";
+  }
+  let data = await response.json();
+
+  let photographer = data.photographers.find((element) => element.id == idUser);
+  let media = data.media.filter((m) => m.photographerId == idUser);
+
+  setDataInHtml(photographer, media);
+}
+setData();
+
