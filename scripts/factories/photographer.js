@@ -1,10 +1,11 @@
 function photographerFactory(data) {
-  const { name, portrait, city, country, tagline, price } = data;
+  const { name, portrait, city, country, tagline, price, id } = data;
 
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
-      const article = document.createElement( 'article' );
+      const article = document.createElement( 'a' );
+      article.href = `photographer.html?id=${id}` ;
       const img = document.createElement( 'img' );
       img.setAttribute("src", picture)
       const h2 = document.createElement( 'h2' );
@@ -25,23 +26,23 @@ function photographerFactory(data) {
   return { name, picture, getUserCardDOM }
 }
 
-function getParamsUrl(url) {
-  let string = url.search;
-  return string.substring(3);
-}
-const idUser = getParamsUrl(window.location);
+// function getParamsUrl(url) {
+//   let string = url.search;
+//   return string.substring(3);
+// }
+// const idUser = getParamsUrl(window.location);
 
-async function setData() {
-  let response = await fetch("../data/photographers.json");
-  if (!response.ok) {
-    return "error";
-  }
-  let data = await response.json();
+// async function setData() {
+//   let response = await fetch("../data/photographers.json");
+//   if (!response.ok) {
+//     return "error";
+//   }
+//   let data = await response.json();
 
-  let photographer = data.photographers.find((element) => element.id == idUser);
-  let media = data.media.filter((m) => m.photographerId == idUser);
+//   let photographer = data.photographers.find((element) => element.id == idUser);
+//   let media = data.media.filter((m) => m.photographerId == idUser);
 
-  setDataInHtml(photographer, media);
-}
-setData();
+//   setDataInHtml(photographer, media);
+// }
+// setData();
 
