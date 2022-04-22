@@ -23,10 +23,26 @@ async function getPhotographerById(id) {
 
 async function displayData(photographer)
 {
-    const { name, portrait, city, country, tagline, price, id, medias } = photographer;
+    const { name, portrait, city, country, tagline, price, id, media, title, likes } = photographer;
     const picture = `assets/photographers/${portrait}`;
     document.getElementById("namePhotographer").innerText = name;
+    document.getElementById("cityPhotographer").innerText = city + ", " + country;
+    document.getElementById("taglinePhotographer").innerText = tagline;
+    document.getElementById("photosPhotographer").innerText = media;
+    document.getElementById("titrePhoto").innerText = title;
+    document.getElementById("titrePhoto").innerText = likes;
+    
 }
+
+// async function displayData(medias)
+// {
+//     const { id, medias, title, likes } = medias;
+//     const picture = `assets/photos/${portrait}`;
+//     document.getElementById("photosPhotographer").innerText = medias;
+//     document.getElementById("titrePhoto").innerText = title;
+//     document.getElementById("titrePhoto").innerText = likes;
+    
+// }
 
 async function init()
 {

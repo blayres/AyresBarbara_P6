@@ -2,10 +2,48 @@
   display: none;
 }
 
+body{
+  font-family: 'DM Sans', sans-serif;
+}
+
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
   margin: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.photograph-header img {
+  border-radius: 50%;
+  width: 16%;
+  height: 66%;
+  object-fit: cover;
+}
+
+.photograph-header-left h1 {
+  color: #D3573C;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 83px;
+  margin-bottom: -20px;
+}
+
+.photograph-header-left h2 {
+  color: #901C1C;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 31px;
+  margin-bottom: -2px;
+}
+
+.photograph-header-left h3 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #525252;
 }
 
 .contact_button {
@@ -21,16 +59,84 @@
   cursor: pointer;
 }
 
+.contact_button:hover {
+  background-color: #DB8876;
+  color: #000000;
+}
+
+/* LES PHOTOS */
+.diaporama-main {
+  margin: 0 100px;
+}
+
+.diaporama-main-titre {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.diaporama-main-titre-et-menu {
+  display: flex;
+}
+
+.diaporama-main-menu {
+  list-style-type: none;
+  background-color: #901C1C;
+  border: none;
+  padding: 0%;
+  width: 170px;
+  height: 170px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin-left: 25px;
+}
+
+.diaporama-main-menu li {
+  margin-left: 20px;
+}
+
+.popularite-arrow {
+  display: flex;
+}
+
+.popularite-arrow i {
+  color: #fff;
+  margin-left: 20px;
+  width: 20px;
+}
+
+.ligne {
+  width: 145px;
+  border: 0.5px solid #fff;
+  margin-left: 12.5px;
+}
+
+.photo_et_sous-titres img {
+  background-color: #525252;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1fr;
+  gap: 70px;
+}
+
+
+/* MODAL */
 .modal {
   border-radius: 5px;
   background-color: #DB8876;
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
   margin: auto;
+  width: 669px;
+  height: 900px;
 }
 
 .modal header {
@@ -73,4 +179,9 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.inputMessage {
+  Height: 170px;
 }
