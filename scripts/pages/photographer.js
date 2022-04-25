@@ -13,10 +13,11 @@ async function getPhotographerById(id) {
             .then(response => response.json())
             .then((data) => (medias = data.media));
 
-    //On cherche le photographe avec l'id
+    //On cherche les medias du photographe avec l'id
     let mediasPhotographer = medias.filter(media => media.photographerId == id);
     photographer.medias = mediasPhotographer;
     return {photographer};
+    
 
   }
 
@@ -28,21 +29,24 @@ async function displayData(photographer)
     document.getElementById("namePhotographer").innerText = name;
     document.getElementById("cityPhotographer").innerText = city + ", " + country;
     document.getElementById("taglinePhotographer").innerText = tagline;
-    document.getElementById("photosPhotographer").innerText = media;
-    document.getElementById("titrePhoto").innerText = title;
-    document.getElementById("titrePhoto").innerText = likes;
+    // document.getElementById("photosPhotographer").innerText = media;
+    // document.getElementById("titrePhoto").innerText = title;
+    // document.getElementById("titrePhoto").innerText = likes;
+    document.getElementById("namePhotographerModal").innerText = name;
     
 }
 
-// async function displayData(medias)
+
+
+// async function getMediasById(mediasPhotographer)
 // {
-//     const { id, medias, title, likes } = medias;
-//     const picture = `assets/photos/${portrait}`;
-//     document.getElementById("photosPhotographer").innerText = medias;
-//     document.getElementById("titrePhoto").innerText = title;
-//     document.getElementById("titrePhoto").innerText = likes;
+//      const { id, image, title, likes } = mediasPhotographer;
+//      const picture = `assets/photos/${portrait}`;
+//      document.getElementById("photosPhotographer").innerText = image;
+//      document.getElementById("titrePhoto").innerText = title;
+//      document.getElementById("titrePhoto").innerText = likes;
     
-// }
+//  }
 
 async function init()
 {
