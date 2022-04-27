@@ -24,16 +24,40 @@ async function getPhotographerById(id) {
 
 async function displayData(photographer)
 {
-    const { name, portrait, city, country, tagline, price, id, media, title, likes } = photographer;
+    const { name, portrait, city, country, tagline, price, id, medias, title, likes } = photographer;
     const picture = `assets/photographers/${portrait}`;
     document.getElementById("namePhotographer").innerText = name;
     document.getElementById("cityPhotographer").innerText = city + ", " + country;
     document.getElementById("taglinePhotographer").innerText = tagline;
-    // document.getElementById("photosPhotographer").innerText = media;
-    // document.getElementById("titrePhoto").innerText = title;
-    // document.getElementById("titrePhoto").innerText = likes;
+    document.getElementById("picturePhotographer").src = picture;
     document.getElementById("namePhotographerModal").innerText = name;
-    
+    let mediasHTML = "";
+    medias.map(media => {
+        let pictureMedia; 
+        let imageOrVideo;
+        if (media.image) {
+            pictureMedia = `assets/photos/${media.image}`;
+            imageOrVideo = `<img src="${pictureMedia}" alt="">`;
+        } else {
+            pictureMedia = `assets/photos/${media.video}`;
+            imageOrVideo = `<video src="${pictureMedia}" alt=""></video>`;
+        }
+
+        mediasHTML = mediasHTML +  `
+        <div class="miniature">
+       ${imageOrVideo}
+        <div class="sous-titre">
+          <h4 id="titrePhoto">${media.title}</h4>
+          <div class="likes_heart">
+            <h4 id="likesPhoto">${media.likes}</h4>
+            <i class="fas fa-heart"></i>
+          </div>
+        </div>
+      </div>
+        `;
+
+    })
+    document.getElementById("photosPhotographer").innerHTML = mediasHTML;
 }
 
 
@@ -55,6 +79,17 @@ async function init()
     const id = urlParams.get("id"); 
     const {photographer} = await getPhotographerById(id); 
     displayData(photographer);
+}
+
+async function openDropDown()
+{
+    document.querySelector(".diaporama-main-menu-seul").style.display="none";
+    document.querySelector(".diaporama-main-menu").style.visibility="visible";
+    
+}
+
+async function filterBy(type) {
+    
 }
 
 init();

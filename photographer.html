@@ -13,13 +13,13 @@
 </head>
 
 <body>
-  <header>
+  <header class="container">
     <a href="../index.html">
       <img src="assets/images/logo.png" class="logo" alt="Fisheye home page" />
     </a>
   </header>
 
-  <main id="main">
+  <main id="main" class="container">
     <div class="photograph-header">
       <div class="photograph-header-left">
         <h1 id="namePhotographer"></h1>
@@ -27,14 +27,14 @@
         <h3 id="taglinePhotographer"></h3>
       </div>
       <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
-      <img src="/assets/photographers/MimiKeel.jpg" alt="Portrait Photographe">
+      <img id="picturePhotographer" src="" alt="Portrait Photographe">
     </div>
 
     <div class="diaporama-main">
       <div class="diaporama-main-titre-et-menu">
         <h3 class="diaporama-main-titre">Trier par</h3>
 
-        <button class="diaporama-main-menu-seul" onclick="style.display='none'">
+        <button class="diaporama-main-menu-seul" onclick="openDropDown()">
           <div class="popularite-arrow">
             <li>Popularité</li>
             <i class="fas fa-chevron-down"></i>
@@ -57,22 +57,9 @@
         <div class="photo_et_sous-titres">
           <div id="photosPhotographer">
 
-            <div class="miniature">
-              <img src="/assets/photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="">
-              <div class="sous-titre">
-                <h4 id="titrePhoto">Arc-en-ciel</h4>
-                <div class="likes_heart">
-                  <h4 id="likesPhoto">11</h4>
-                  <i class="fas fa-heart"></i>
-                </div>
-              </div>
-            </div>
+            
 
-            <img src="/assets/photos/Ellie Rose/Architecture_Cross_Bar.jpg" alt="">
-            <img src="/assets/photos/Ellie Rose/Architecture_Horseshoe.jpg" alt="">
-            <img src="/assets/photos/Ellie Rose/Architecture_Water_on_Modern.jpg" alt="">
-            <img src="/assets/photos/Ellie Rose/Sport_Jump.jpg" alt="">
-            <img src="/assets/photos/Ellie Rose/Sport_Next_Hold.jpg" alt="">
+          
           </div>
         </div>
       </div>

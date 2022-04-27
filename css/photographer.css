@@ -6,6 +6,15 @@ body{
   font-family: 'DM Sans', sans-serif;
 }
 
+.container {
+  max-width: 1440px;
+  margin: auto;
+}
+
+.vsc-initialized {
+  max-width: none;
+}
+
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
@@ -111,8 +120,9 @@ body{
   font-size: 18px;
   justify-content: space-evenly;
   flex-direction: column;
-  margin-left: -170px;
+  margin-left: 25px;
   position: relative;
+  visibility: hidden;
 }
 
 .diaporama-main-menu-seul li {
@@ -150,6 +160,12 @@ body{
 }
 
 #photosPhotographer img {
+  Width: 350px;
+  Height: 300px;
+  object-fit: cover;
+}
+
+#photosPhotographer video {
   Width: 350px;
   Height: 300px;
   object-fit: cover;
