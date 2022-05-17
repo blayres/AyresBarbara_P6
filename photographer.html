@@ -34,60 +34,86 @@
       <div class="diaporama-main-titre-et-menu">
         <h3 class="diaporama-main-titre">Trier par</h3>
 
-        <button class="diaporama-main-menu-seul" onclick="openDropDown()">
+        <button class="diaporama-main-menu-seul" onclick="openDropDown()" style="cursor: pointer;">
           <div class="popularite-arrow">
-            <li>Popularité</li>
+            <li id="activeFilter">Popularité</li>
             <i class="fas fa-chevron-down"></i>
           </div>
         </button>
 
         <button class="diaporama-main-menu" aria-labelledby="Order by">
           <div class="popularite-arrow">
-            <li>Popularité</li>
+            <li onclick="filterBy('popularity')" style="cursor: pointer;">Popularité</li>
             <i class="fas fa-chevron-up"></i>
           </div>
           <div class="ligne"></div>
-          <li>Date</li>
+          <li onclick="filterBy('date')" style="cursor: pointer;">Date</li>
           <div class="ligne"></div>
-          <li>Titre</li>
+          <li onclick="filterBy('title')" style="cursor: pointer;">Titre</li>
         </button>
       </div>
 
       <div class="diaporama-main-photos">
         <div class="photo_et_sous-titres">
-          <div id="photosPhotographer">
-
-            
-
-          
-          </div>
+          <div id="photosPhotographer"></div>
         </div>
       </div>
 
     </div>
+
+    <div class="rectangle_box">
+      <div class="rectangle">
+        <div class="rectangle-texte">
+            <div class="likes_heart">
+              <h4 id="totalLikesPhoto"></h4>
+              <i class="fas fa-heart"></i>
+            </div>
+            <h4 id="pricePhoto"></h4>
+        </div>
+      </div>
+    </div>
+
   </main>
-  <div id="contact_modal">
-    <div class="modal">
-      <header>
-        <div class="titre-modal">
-          <h2>Contactez-moi</h2>
-          <h2 id="namePhotographerModal"></h2>
-        </div>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
-      </header>
-      <form>
-        <div>
-          <label>Prénom</label>
-          <input type="text" />
-          <label>Nom</label>
-          <input type="text">
-          <label>Email</label>
-          <input type="text">
-          <label>Votre message</label>
-          <input type="text" class="inputMessage">
-        </div>
-        <button class="contact_button">Envoyer</button>
-      </form>
+
+  <section id="lightbox" style="display: none;">
+    <div class="bgLightbox">
+      <div class="contenu-lightbox">
+            <i class="fermer fermer-lightbox fas fa-times" aria-label="Fermer la modal" onclick="closeLightbox()"></i>
+            <i class="fleche fas fa-chevron-left" aria-label="Image précédente" id="fleche-gauche" onclick="previous()"></i>
+            <i class="fleche fas fa-chevron-right" aria-label="Image suivante" id="fleche-droite" onclick="next()"></i>
+          <div class="photo-titre-lightbox">
+              <div id="contenu-photo-lightbox">
+              </div>
+              <span class="titre-photo" id="titre-photo-lightbox"></span>
+          </div>
+      </div>
+    </div>
+</section>
+
+  <div class="bground">
+    <div id="contact_modal">
+      <div class="modal">
+        <header>
+          <div class="titre-modal">
+            <h2>Contactez-moi</h2>
+            <h2 id="namePhotographerModal"></h2>
+          </div>
+          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        </header>
+        <form>
+          <div>
+            <label id="form-prenom">Prénom</label>
+            <input type="text">
+            <label id="form-nom">Nom</label>
+            <input type="text">
+            <label id="form-email">Email</label>
+            <input type="text">
+            <label id="form-message">Votre message</label>
+            <input type="text" class="inputMessage">
+          </div>
+          <button class="contact_button">Envoyer</button>
+        </form>
+      </div>
     </div>
   </div>
   <script src="/scripts/utils/contactForm.js"></script>
