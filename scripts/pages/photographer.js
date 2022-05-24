@@ -1,4 +1,5 @@
 var mediasStock;
+var lightboxIsOpen = false;
 
 //Mettre le code JavaScript lié à la page photographer.html
 async function getPhotographerById(id) {
@@ -21,11 +22,9 @@ async function getPhotographerById(id) {
   return {
     photographer
   };
-
-
 }
 
-
+// Pour remplir les éléments avec les datas du json
 async function displayData(photographer) {
   const {
     name,
@@ -34,10 +33,7 @@ async function displayData(photographer) {
     country,
     tagline,
     price,
-    id,
     medias,
-    title,
-    likes
   } = photographer;
   const picture = `assets/photographers/${portrait}`;
   document.getElementById("namePhotographer").innerText = name;
@@ -56,10 +52,10 @@ async function displayData(photographer) {
     let imageOrVideo;
     if (media.image) {
       pictureMedia = `assets/photos/${media.image}`;
-      imageOrVideo = `<img src="${pictureMedia}" alt="" onclick="ouvreLightbox('${media.title}','${pictureMedia}','image','${i}')" style="cursor: pointer;">`;
+      imageOrVideo = `<img src="${pictureMedia}" alt="Open Ligthbox" onclick="ouvreLightbox('${media.title}','${pictureMedia}','image','${i}')" style="cursor: pointer;">`;
     } else {
       pictureMedia = `assets/photos/${media.video}`;
-      imageOrVideo = `<video src="${pictureMedia}" alt="" onclick="ouvreLightbox('${media.title}','${pictureMedia}','video','${i}')" style="cursor: pointer;"></video>`;
+      imageOrVideo = `<video src="${pictureMedia}" alt="Open Ligthbox" onclick="ouvreLightbox('${media.title}','${pictureMedia}','video','${i}')" style="cursor: pointer;"></video>`;
     }
 
     mediasHTML = mediasHTML + `
@@ -80,6 +76,8 @@ async function displayData(photographer) {
   document.getElementById("photosPhotographer").innerHTML = mediasHTML;
 }
 
+// Ajouter un like
+/* eslint-disable */
 async function addLike(el) {
   let nbLike = parseInt(el.querySelector(".nbLike").innerText);
   nbLike++;
@@ -89,7 +87,9 @@ async function addLike(el) {
   totalLikesPhoto++;
   document.getElementById("totalLikesPhoto").innerText = totalLikesPhoto;
 }
+/* eslint-enable */
 
+// Initier 
 async function init() {
   const query = window.location.search;
   const urlParams = new URLSearchParams(query);
@@ -100,11 +100,16 @@ async function init() {
   displayData(photographer);
 }
 
+// Ouvrir le menu de triage
+/* eslint-disable */
 async function openDropDown() {
   document.querySelector(".diaporama-main-menu-seul").style.display = "none";
   document.querySelector(".diaporama-main-menu").style.visibility = "visible";
 }
+/* eslint-enable */
 
+// Filtrer le choix du bouton 
+/* eslint-disable */
 async function filterBy(type) {
 
   if (type == 'popularity') {
@@ -129,8 +134,9 @@ async function filterBy(type) {
   }
 
 }
+/* eslint-enable */
 
-/** Triage **/
+// Triage
 async function trier(choixTrier) {
   
   switch (choixTrier) {
@@ -160,23 +166,23 @@ async function trier(choixTrier) {
     let imageOrVideo;
     if (media.image) {
       pictureMedia = `assets/photos/${media.image}`;
-      imageOrVideo = `<img src="${pictureMedia}" alt="" onclick="ouvreLightbox('${media.title}','${pictureMedia}','image','${i}')" style="cursor: pointer;">`;
+      imageOrVideo = `<img src="${pictureMedia}" alt="image closeup view" onclick="ouvreLightbox('${media.title}','${pictureMedia}','image','${i}')" style="cursor: pointer;">`;
     } else {
       pictureMedia = `assets/photos/${media.video}`;
-      imageOrVideo = `<video src="${pictureMedia}" alt="" onclick="ouvreLightbox('${media.title}','${pictureMedia}','video','${i}')" style="cursor: pointer;"></video>`;
+      imageOrVideo = `<video src="${pictureMedia}" alt="image closeup view" onclick="ouvreLightbox('${media.title}','${pictureMedia}','video','${i}')" style="cursor: pointer;"></video>`;
     }
 
     mediasHTML = mediasHTML + `
-        <div class="miniature">
+        <article class="miniature">
         ${imageOrVideo}
         <div class="sous-titre">
           <h4>${media.title}</h4>
           <div class="likes_heart" onclick="addLike(this)">
-            <h4 class="nbLike">${media.likes}</h4>
+            <h4 class="nbLike" aria-label=”likes”>${media.likes}</h4>
             <i class="fas fa-heart"></i>
           </div>
         </div>
-      </div>
+      </article>
         `;
     i++;
   })
@@ -184,14 +190,14 @@ async function trier(choixTrier) {
 
 }
 
-/** Lightbox **/
+// Ouvrir la lightbox
 async function ouvreLightbox(titre, pictureMedia, type, index) {
   localStorage.setItem('index', index);
   let imageOrVideo;
   if (type == 'image') {
     imageOrVideo = `<img src="${pictureMedia}" alt="">`;
   } else {
-    imageOrVideo = `<video src="${pictureMedia}" alt=""></video>`;
+    imageOrVideo = `<video controls src="${pictureMedia}" alt=""></video>`;
   }
   document.getElementById("contenu-photo-lightbox").innerHTML = imageOrVideo;
   document.getElementById("titre-photo-lightbox").innerHTML = titre;
@@ -199,9 +205,10 @@ async function ouvreLightbox(titre, pictureMedia, type, index) {
   /* Affiche la lightbox */
   document.getElementsByTagName("main")[0].style.overflow = "hidden";
   document.getElementById("lightbox").style.display = "block"; 
-
+  lightboxIsOpen = true;
 }
 
+// Passer à l'image suivante 
 async function next() {
   let index = localStorage.getItem('index');
   let nextIndex = parseInt(index) + 1;
@@ -212,7 +219,6 @@ async function next() {
   let nextMedia = mediasStock[nextIndex];
   console.log(index);
   let pictureMedia;
-    let imageOrVideo;
     if (nextMedia.image) {
       pictureMedia = `assets/photos/${nextMedia.image}`;
       ouvreLightbox(nextMedia.title, pictureMedia, 'image', nextIndex);
@@ -223,6 +229,7 @@ async function next() {
 
 }
 
+// Passer à l'image précédente 
 async function previous() {
   let index = localStorage.getItem('index');
   let previousIndex = parseInt(index) - 1;
@@ -233,7 +240,6 @@ async function previous() {
   let previousMedia = mediasStock[previousIndex];
   console.log(index);
   let pictureMedia;
-    let imageOrVideo;
     if (previousMedia.image) {
       pictureMedia = `assets/photos/${previousMedia.image}`;
       ouvreLightbox(previousMedia.title, pictureMedia, 'image', previousIndex);
@@ -244,10 +250,37 @@ async function previous() {
 
 }
 
+// Fermer la ligthbox
 async function closeLightbox() {
   document.getElementById("lightbox").style.display = "none"; 
   document.getElementsByTagName("main")[0].style.overflow = "visibility";
+  lightboxIsOpen = false;
 }
+
+document.addEventListener('keydown', (key) => {
+
+  
+  //ESC KEY
+  if(key.code == "Escape") {
+    if(lightboxIsOpen){
+      closeLightbox();
+    } 
+  }
+
+  //LEFT KEY
+  else if(key.code == "ArrowLeft"){
+    if(lightboxIsOpen) {
+      previous();
+    }
+  }
+
+  //RIGHT KEY
+  else if(key.code == "ArrowRight"){
+    if(lightboxIsOpen) {
+      next();
+    }
+  }
+})
 
 
 

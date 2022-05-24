@@ -349,7 +349,8 @@ body{
 
 .modal header {
   justify-content: space-between;
-  width: 100%;
+  align-items: baseline;
+  width: 600px;
 }
 
 .modal header img {
@@ -365,12 +366,12 @@ body{
 }
 
 .titre-modal{
-  margin-top: 40px;
+  margin-top: -15px;
 }
 
 form {
   display: flex;
-  width: 100%;
+  width: 600px;
   flex-direction: column;
   align-items: flex-start;
 }
@@ -389,7 +390,7 @@ form div {
 }
 
 form input {
-  width: 100%;
+  width: 600px;
   height: 68px;
   border: none;
   border-radius: 5px;
