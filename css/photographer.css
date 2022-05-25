@@ -92,6 +92,7 @@ body{
 
 .diaporama-main-menu-seul {
   list-style-type: none;
+  text-decoration: none;
   background-color: #901C1C;
   border: none;
   padding: 0%;
@@ -106,6 +107,7 @@ body{
   flex-direction: column;
   margin-left: 25px;
 }
+
 
 .diaporama-main-menu {
   display: flex;
@@ -124,6 +126,11 @@ body{
   margin-left: 25px;
   position: relative;
   visibility: hidden;
+}
+
+.diaporama-main-menu a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .diaporama-main-menu-seul li {
@@ -184,6 +191,11 @@ body{
   color: #901C1C;
   font-size: 24px;
   margin: -30px 0;
+}
+
+.sous-titre a {
+  text-decoration: none;
+  color: #901C1C;
 }
 
 .sous-titre h4 {

@@ -52,10 +52,10 @@ async function displayData(photographer) {
     let imageOrVideo;
     if (media.image) {
       pictureMedia = `assets/photos/${media.image}`;
-      imageOrVideo = `<img src="${pictureMedia}" alt="Open Ligthbox" onclick="ouvreLightbox('${media.title}','${pictureMedia}','image','${i}')" style="cursor: pointer;">`;
+      imageOrVideo = `<a href="javascript:void(0)" onclick="ouvreLightbox('${media.title}','${pictureMedia}','image','${i}')"><img src="${pictureMedia}" alt="Open Ligthbox" style="cursor: pointer;"></a>`;
     } else {
       pictureMedia = `assets/photos/${media.video}`;
-      imageOrVideo = `<video src="${pictureMedia}" alt="Open Ligthbox" onclick="ouvreLightbox('${media.title}','${pictureMedia}','video','${i}')" style="cursor: pointer;"></video>`;
+      imageOrVideo = `<a href="javascript:void(0)" onclick="ouvreLightbox('${media.title}','${pictureMedia}','video','${i}')"><video src="${pictureMedia}" alt="Open Ligthbox" style="cursor: pointer;"></video></a>`;
     }
 
     mediasHTML = mediasHTML + `
@@ -63,10 +63,10 @@ async function displayData(photographer) {
         ${imageOrVideo}
         <div class="sous-titre">
           <h4>${media.title}</h4>
-          <div class="likes_heart" onclick="addLike(this)">
+          <a href="javascript:vois(0)" class="likes_heart" onclick="addLike(this)">
             <h4 class="nbLike">${media.likes}</h4>
             <i class="fas fa-heart"></i>
-          </div>
+          </a>
         </div>
       </div>
         `;

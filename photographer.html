@@ -34,22 +34,22 @@
       <div class="diaporama-main-titre-et-menu">
         <h3 class="diaporama-main-titre">Trier par</h3>
 
-        <div class="diaporama-main-menu-seul" onclick="openDropDown()" style="cursor: pointer;" aria-label="Listbox">
+        <a href="javascript:void(0)" class="diaporama-main-menu-seul" onclick="openDropDown()" style="cursor: pointer;" aria-label="Listbox">
           <ul class="popularite-arrow">
             <li id="activeFilter">Popularité</li>
             <i class="fas fa-chevron-down"></i>
           </ul>
-        </div>
+        </a>
 
         <div class="diaporama-main-menu" aria-label="Order by">
           <div class="popularite-arrow">
-            <li onclick="filterBy('popularity')" style="cursor: pointer;">Popularité</li>
+            <li style="cursor: pointer;"><a href="javascript:void(0)" onclick="filterBy('popularity')">Popularité</a></li>
             <i class="fas fa-chevron-up"></i>
           </div>
           <div class="ligne"></div>
-          <li onclick="filterBy('date')" style="cursor: pointer;">Date</li>
+          <li style="cursor: pointer;"><a href="javascript:void(0)" onclick="filterBy('date')">Date</a></li>
           <div class="ligne"></div>
-          <li onclick="filterBy('title')" style="cursor: pointer;">Titre</li>
+          <li style="cursor: pointer;"><a href="javascript:void(0)" onclick="filterBy('title')">Titre</a></li>
         </div>
       </div>
 
