@@ -34,14 +34,14 @@
       <div class="diaporama-main-titre-et-menu">
         <h3 class="diaporama-main-titre">Trier par</h3>
 
-        <button class="diaporama-main-menu-seul" onclick="openDropDown()" style="cursor: pointer;" aria-label="Listbox">
-          <span class="popularite-arrow">
+        <div class="diaporama-main-menu-seul" onclick="openDropDown()" style="cursor: pointer;" aria-label="Listbox">
+          <ul class="popularite-arrow">
             <li id="activeFilter">Popularité</li>
             <i class="fas fa-chevron-down"></i>
-          </span>
-        </button>
+          </ul>
+        </div>
 
-        <button class="diaporama-main-menu" aria-label="Order by">
+        <div class="diaporama-main-menu" aria-label="Order by">
           <div class="popularite-arrow">
             <li onclick="filterBy('popularity')" style="cursor: pointer;">Popularité</li>
             <i class="fas fa-chevron-up"></i>
@@ -50,7 +50,7 @@
           <li onclick="filterBy('date')" style="cursor: pointer;">Date</li>
           <div class="ligne"></div>
           <li onclick="filterBy('title')" style="cursor: pointer;">Titre</li>
-        </button>
+        </div>
       </div>
 
       <div class="diaporama-main-photos">

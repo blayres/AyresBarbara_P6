@@ -127,7 +127,8 @@ body{
 }
 
 .diaporama-main-menu-seul li {
-  margin-left: 20px;
+  margin-left: -35px;
+  list-style-type: none;
 }
 
 .diaporama-main-menu li {
